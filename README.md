@@ -41,10 +41,10 @@ Push the container to Google Container Registry:
 
 perl
 docker push gcr.io/PROJECT_ID/pizza-restaurant-management-system
+
 Deploy the container using Cloud Run:
 
 sql
-Copy code
 gcloud run deploy pizza-restaurant-management-system \
   --image gcr.io/PROJECT_ID/pizza-restaurant-management-system \
   --platform managed \
