@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import ThemeContextProvider from './contexts/ThemeContext';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ThemeContextProvider from './context/ThemeContext';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import OrderDashboard from './components/OrderDashboard';
@@ -11,7 +11,6 @@ import PieArtistAnalytics from './components/PieArtistAnalytics';
 import './styles.css';
 import './dark-theme.css';
 
-
 function App() {
   return (
     <ThemeContextProvider>
@@ -19,13 +18,13 @@ function App() {
         <div className="App">
           <Header />
           <Sidebar />
-          <Switch>
-            <Route path="/orders" component={OrderDashboard} />
-            <Route path="/analytics" component={AnalyticsDashboard} />
-            <Route path="/toppings" component={ToppingManagement} />
-            <Route path="/customer" component={CustomerInterface} />
-            <Route path="/pie-artist" component={PieArtistAnalytics} />
-          </Switch>
+          <Routes>
+            <Route path="/orders" element={<OrderDashboard />} />
+            <Route path="/analytics" element={<AnalyticsDashboard />} />
+            <Route path="/toppings" element={<ToppingManagement />} />
+            <Route path="/customer" element={<CustomerInterface />} />
+            <Route path="/pie-artist" element={<PieArtistAnalytics />} />
+          </Routes>
         </div>
       </Router>
     </ThemeContextProvider>
