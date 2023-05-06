@@ -8,7 +8,9 @@ import AnalyticsDashboard from './components/AnalyticsDashboard';
 import ToppingManagement from './components/ToppingManagement';
 import CustomerInterface from './components/CustomerInterface';
 import PieArtistAnalytics from './components/PieArtistAnalytics';
-import './App.css';
+import './styles.css';
+import './dark-theme.css';
+
 
 function App() {
   return (
