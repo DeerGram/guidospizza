@@ -17,7 +17,7 @@ Enable Cloud Run API: gcloud services enable run.googleapis.com
 Create a Dockerfile in the root directory of the project:
 
 sql
-Copy code
+
 FROM node:16
 
 WORKDIR /app
@@ -34,14 +34,12 @@ CMD ["npm", "start"]
 Build the Docker container:
 
 bash
-Copy code
 docker build -t gcr.io/PROJECT_ID/pizza-restaurant-management-system .
 Replace PROJECT_ID with your actual project ID.
 
 Push the container to Google Container Registry:
 
 perl
-Copy code
 docker push gcr.io/PROJECT_ID/pizza-restaurant-management-system
 Deploy the container using Cloud Run:
 
