@@ -1,25 +1,24 @@
-# guidospizza
-Pizza Ordering System
-To deploy the pizza restaurant management system on Google Cloud in 2023, you can use Google Cloud Run, which is a fully managed compute
-platform for deploying and scaling containerized applications. The process consists of several steps, including creating a Docker container, 
-pushing it to Google Container Registry, and deploying it using Cloud Run.
-
-Install the required tools:
-
-Install the Google Cloud SDK: https://cloud.google.com/sdk/docs/install
-Install Docker: https://docs.docker.com/get-docker/
-Log in to Google Cloud: gcloud auth login
-Configure the project:
-
-Create a new Google Cloud project or use an existing one.
-Set the project ID in your terminal: gcloud config set project PROJECT_ID
-Enable Cloud Run API: gcloud services enable run.googleapis.com
-Create a Dockerfile in the root directory of the project:
-
-sql
-
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<h1>Pizza Ordering System</h1>
+<p>This repository contains the code for a pizza restaurant management system. The following instructions guide you through deploying the application on Google Cloud Run in 2023.</p>
+<h2>Prerequisites</h2>
+<ol>
+    <li>Install the <a href="https://cloud.google.com/sdk/docs/install">Google Cloud SDK</a></li>
+    <li>Install <a href="https://docs.docker.com/get-docker/">Docker</a></li>
+    <li>Log in to Google Cloud: <code>gcloud auth login</code></li>
+</ol>
+<h2>Configure the Project</h2>
+<ol>
+    <li>Create a new Google Cloud project or use an existing one.</li>
+    <li>Set the project ID in your terminal: <code>gcloud config set project PROJECT_ID</code></li>
+    <li>Enable Cloud Run API: <code>gcloud services enable run.googleapis.com</code></li>
+</ol>
+<h2>Create a Dockerfile</h2>
+<p>Create a <code>Dockerfile</code> in the root directory of the project:</p>
+<div class="code-box">
 FROM node:16
-
 WORKDIR /app
 
 COPY package*.json ./
@@ -31,32 +30,32 @@ RUN npm run build
 
 EXPOSE 3000
 CMD ["npm", "start"]
-Build the Docker container:
 
-bash
+</div>
+<h2>Build the Docker Container</h2>
+<p>Build the Docker container by running the following command in the terminal. Replace <code>PROJECT_ID</code> with your actual project ID:</p>
+<div class="code-box">
 docker build -t gcr.io/PROJECT_ID/pizza-restaurant-management-system .
-Replace PROJECT_ID with your actual project ID.
-
-Push the container to Google Container Registry:
-
-perl
+</div>
+<h2>Push the Container to Google Container Registry</h2>
+<p>Push the container to Google Container Registry:</p>
+<div class="code-box">
 docker push gcr.io/PROJECT_ID/pizza-restaurant-management-system
-
-Deploy the container using Cloud Run:
-
-sql
+</div>
+<h2>Deploy the Container Using Cloud Run</h2>
+<p>Deploy the container using Cloud Run with the following command. Replace <code>REGION</code> with your desired region, such as <code>us-central1</code>:</p>
+<div class="code-box">
 gcloud run deploy pizza-restaurant-management-system \
-  --image gcr.io/PROJECT_ID/pizza-restaurant-management-system \
-  --platform managed \
-  --region REGION \
-  --allow-unauthenticated
-Replace REGION with your desired region, such as us-central1.
+--image gcr.io/PROJECT_ID/pizza-restaurant-management-system \
+--platform managed \
+--region REGION \
+--allow-unauthenticated
+</div>
+<p>You should see the deployment's URL after the command completes. Visit the URL to access the pizza restaurant management system application.</p>
 
-You should see the deployment's URL after the command completes. Visit the URL to access the pizza restaurant management system application.
-
-Make sure to configure environment variables, secrets, and any other required settings for your application when deploying to Google Cloud Run. 
-You can set environment variables using the --set-env-vars flag when deploying with gcloud run deploy. For more information on using environment 
-variables and secrets in Cloud Run, refer to the documentation: https://cloud.google.com/run/docs/configuring/environment-variables
-
-This is a high-level overview of deploying a containerized application to Google Cloud Run. For more detailed information, consult the official 
-Google Cloud Run documentation: https://cloud.google.com/run/docs/quickstarts/build-and-deploy
+<h2>Configure Environment Variables and Secrets</h2>
+<p>Make sure to configure environment variables, secrets, and any other required settings for your application when deploying to Google Cloud Run. You can set environment variables using the <code>--set-env-vars</code> flag when deploying with <code>gcloud run deploy</code>. For more information on using environment variables and secrets in Cloud Run, refer to the documentation: <a href="https://cloud.google.com/run/docs/configuring/environment-variables">https://cloud.google.com/run/docs/configuring/environment-variables</a></p>
+<h2>Additional Resources</h2>
+<p>This is a high-level overview of deploying a containerized application to Google Cloud Run. For more detailed information, consult the official Google Cloud Run documentation: <a href="https://cloud.google.com/run/docs/quickstarts/build-and-deploy">https://cloud.google.com/run/docs/quickstarts/build-and-deploy</a></p>
+</body>
+</html>
