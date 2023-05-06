@@ -6,10 +6,16 @@ const ThemeContextProvider = (props) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  if (theme === "light") {
+    setTheme("dark");
+    document.body.classList.add("dark-theme");
+  } else {
+    setTheme("light");
+    document.body.classList.remove("dark-theme");
+  }
+};
 
-  return (
+return (
     <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
       {props.children}
     </ThemeContext.Provider>
